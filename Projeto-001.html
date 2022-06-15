@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual o seu carro</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font: normal 15pt arial;
+            box-sizing: border-box;
+            margin: 0;
+            text-align: center;
+        }
+
+        #container{
+            margin-top: 150px;
+            width: 80%;
+            max-width: 700px;
+            margin-inline: auto;
+        }
+        img{
+            width: border-box;
+            max-width: 500px;
+        }
+        p{
+            opacity: 0.7;
+        }
+        input, button{
+            display: block;
+            width: 90%;
+            padding: 13px;
+            border-radius: 4px;
+            margin-left: 30px;
+        
+        }
+        #inputNome{
+            margin-bottom: 5px;
+            border: none;
+        }
+        #inputIdade{
+            margin-bottom: 5px;
+            border: none;
+        }
+        button{
+            background-color: blueviolet;
+            border: none;
+            width: 94%;
+            font-weight: bolder;
+            font-size: 15pt;
+        }
+        button:hover{
+            cursor: pointer;
+            filter:brightness(1.2);
+
+        }
+        #resposta {
+            margin-top: 30px;
+            transition: opacity 1s;
+        }
+        #resposta div {
+            font-size: 16px;
+            font-weight: normal;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <img src="https://www.autoo.com.br/fotos/2016/8/960_720/MarcasCarros_01082016_3160_960_720.jpg" />
+        <h1>Qual o carro combina com você?</h1>
+        <p>Digite seu nome e idade para descobrir o seu próximo carro</p>
+        <input id = "inputNome" type="text" placeholder="Digite seu nome">
+        <input id = "inputIdade" type="text" placeholder="Digite sua idade">
+        <button id = "botaoPergunta" onclick="fazerPergunta()">Saber Resultado</button>
+        
+        <h3 id="resposta"></h3>
+
+    </div>
+    <script>
+        const elementoResposta = document.querySelector("#resposta")
+        const inputNome = document.querySelector("#inputNome")
+        const inputIdade = document.querySelector('#inputIdade')
+        const buttonPerguntar = document.querySelector('#botaoPergunta')
+        const resposta = [
+            'Caoa Chery',
+            'Hyundai',
+            'Mercedes Benz',
+            'Fiat',
+            'Renault',
+            'Alfa Romeo',
+            'Land Rover',
+            'Volkswagen',
+            'Chevrolet',
+            'Ford',
+            'Opel',
+            'Toyota',
+            'Bmw',
+            'Audi',
+            'Citroen',
+            'Peugeot',
+            'Porsche',
+            'Ferrari',
+            'Mclaren',
+        ]
+        function fazerPergunta() {
+            if( inputNome.value == "") {
+                alert ('Digite seu nome')
+                return
+            }
+            if( inputIdade.value == ''){
+                alert ('Digite sua idade')
+                return
+            }
+
+            buttonPerguntar.setAttribute("disabled", true)
+
+            const nome = "<div>" + inputNome.value + "</div>"
+            const idade = "<div>" + inputIdade.value + "</div>"
+
+            const totalResposta = resposta.length
+            const numeroAleatorio = Math.floor(Math.random() * totalResposta)
+
+            //elementoResposta.innerHTML = nome + idade + resposta[numeroAleatorio]
+            elementoResposta.innerHTML = nome + idade + resposta[numeroAleatorio]
+
+
+        }
+    </script>
+</body>
+</html>
